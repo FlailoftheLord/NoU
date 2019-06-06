@@ -43,6 +43,7 @@ public class NoU extends JavaPlugin implements Listener {
 		adj.add("ur");
 		adj.add("you are");
 		adj.add("u r");
+		adj.add("u are");
 
 	}
 
