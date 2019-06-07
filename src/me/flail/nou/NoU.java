@@ -18,7 +18,7 @@ import me.flail.slashplayer.tools.Logger;
 
 public class NoU extends JavaPlugin implements Listener {
 
-	public Server server;
+	public Server server = getServer();
 	public DataFile settings;
 	private Logger tools;
 	public List<String> adj = new ArrayList<>(8);
@@ -26,15 +26,13 @@ public class NoU extends JavaPlugin implements Listener {
 	@Override
 	public void onLoad() {
 		tools = new Logger();
-
-		server = this.getServer();
-
-		new Settings(this).load();
 	}
 
 	@Override
 	public void onEnable() {
-		getServer().getPluginManager().registerEvents(this, this);
+		new Settings(this).load();
+
+		server.getPluginManager().registerEvents(this, this);
 		getCommand("nou").setExecutor(this);
 
 		defaultWords();

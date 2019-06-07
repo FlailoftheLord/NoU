@@ -7,6 +7,7 @@ import me.flail.slashplayer.DataFile;
 import me.flail.slashplayer.tools.Logger;
 
 public class Settings extends Logger {
+	private NoU plugin;
 
 	private DataFile settings;
 
