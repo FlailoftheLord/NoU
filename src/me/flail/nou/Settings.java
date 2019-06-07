@@ -35,11 +35,12 @@ public class Settings extends Logger {
 				"#-----------------------------------------------------------------\r\n\n");
 
 		Map<String, Object> values = new HashMap<>();
-		values.put("Color", "&c");
+		values.put("Color", "&c&l");
 		values.put("Permission", "nou.chat");
 		values.put("CommandPermission", "nou.command");
 		values.put("ExemptPermission", "nou.exempt");
 		values.put("LogChat", Boolean.valueOf(true));
+		values.put("Phrases", plugin.defaultWords());
 
 		for (String key : values.keySet()) {
 			if (!settings.hasValue(key)) {

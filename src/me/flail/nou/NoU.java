@@ -37,14 +37,7 @@ public class NoU extends JavaPlugin implements Listener {
 		getServer().getPluginManager().registerEvents(this, this);
 		getCommand("nou").setExecutor(this);
 
-		adj.add("you're");
-		adj.add("youre");
-		adj.add("you");
-		adj.add("ur");
-		adj.add("you are");
-		adj.add("u r");
-		adj.add("u are");
-
+		defaultWords();
 	}
 
 	@Override
@@ -65,6 +58,7 @@ public class NoU extends JavaPlugin implements Listener {
 	public void playerSayNoU(AsyncPlayerChatEvent event) {
 		String message = event.getMessage();
 		Player player = event.getPlayer();
+		adj = settings.getList("Phrases");
 
 		for (String phrase : adj) {
 			if (tools.msgCheck(message, phrase, "contains")) {
@@ -90,6 +84,24 @@ public class NoU extends JavaPlugin implements Listener {
 			}
 		}
 
+	}
+
+	public List<String> defaultWords() {
+		adj.clear();
+
+		adj.add("you're");
+		adj.add("youre");
+		adj.add("you");
+		adj.add("ur ");
+		adj.add("you are");
+		adj.add("u r");
+		adj.add("u are");
+		adj.add("why are u");
+		adj.add("y r u");
+		adj.add("why r u");
+		adj.add("why are you");
+
+		return adj;
 	}
 
 }
