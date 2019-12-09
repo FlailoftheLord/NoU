@@ -30,7 +30,7 @@ public class NoU extends JavaPlugin implements Listener {
 
 	@Override
 	public void onEnable() {
-		new Settings(this).load();
+		new Settings().load();
 
 		server.getPluginManager().registerEvents(this, this);
 		getCommand("nou").setExecutor(this);
@@ -42,7 +42,7 @@ public class NoU extends JavaPlugin implements Listener {
 	public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
 		if (command.getName().equalsIgnoreCase("nou")) {
 			if (sender.hasPermission(settings.getValue("CommandPermission"))) {
-				new Settings(this).load();
+				new Settings().load();
 
 				sender.sendMessage(tools
 						.chat(settings.getValue("Color") + "No U &7v" + getDescription().getVersion() + " &2by FlailoftheLord."));

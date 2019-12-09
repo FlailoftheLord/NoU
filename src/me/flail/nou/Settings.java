@@ -7,12 +7,10 @@ import me.flail.slashplayer.DataFile;
 import me.flail.slashplayer.tools.Logger;
 
 public class Settings extends Logger {
-	private NoU plugin;
 
 	private DataFile settings;
 
-	public Settings(NoU plugin) {
-		this.plugin = plugin;
+	public Settings() {
 		settings = new DataFile("Settings.yml");
 	}
 
