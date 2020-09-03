@@ -3,8 +3,8 @@ package me.flail.nou;
 import java.util.HashMap;
 import java.util.Map;
 
-import me.flail.slashplayer.DataFile;
-import me.flail.slashplayer.tools.Logger;
+import me.flail.nou.tools.DataFile;
+import me.flail.nou.tools.Logger;
 
 public class Settings extends Logger {
 
@@ -22,8 +22,7 @@ public class Settings extends Logger {
 				"#                   NoU by FlailoftheLord.                         #\r\n" +
 				"#         -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-                  #\r\n" +
 				"#           If you have any Questions or feedback                  #\r\n" +
-				"#              Join my discord server here:                        #\r\n" +
-				"#               https://discord.gg/wuxW5PS                         #\r\n" +
+				"#              Contact me on SpigotMC via DM's                     #\r\n" +
 				"#   ______               __        _____                           #\r\n" +
 				"#   |       |           /  \\         |        |                    #\r\n" +
 				"#   |__     |          /____\\        |        |                    #\r\n" +
@@ -39,6 +38,7 @@ public class Settings extends Logger {
 		values.put("CommandPermission", "nou.command");
 		values.put("ExemptPermission", "nou.exempt");
 		values.put("LogChat", Boolean.valueOf(true));
+		values.put("UseRandomPlayerAsReply", Boolean.valueOf(false));
 		values.put("Phrases", plugin.defaultWords());
 
 		for (String key : values.keySet()) {

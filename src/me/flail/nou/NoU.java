@@ -2,7 +2,9 @@ package me.flail.nou;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
+import org.bukkit.Bukkit;
 import org.bukkit.Server;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
@@ -13,8 +15,8 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.player.AsyncPlayerChatEvent;
 import org.bukkit.plugin.java.JavaPlugin;
 
-import me.flail.slashplayer.DataFile;
-import me.flail.slashplayer.tools.Logger;
+import me.flail.nou.tools.DataFile;
+import me.flail.nou.tools.Logger;
 
 public class NoU extends JavaPlugin implements Listener {
 
@@ -31,6 +33,7 @@ public class NoU extends JavaPlugin implements Listener {
 	@Override
 	public void onEnable() {
 		new Settings().load();
+
 
 		server.getPluginManager().registerEvents(this, this);
 		getCommand("nou").setExecutor(this);
@@ -66,13 +69,23 @@ public class NoU extends JavaPlugin implements Listener {
 						&& !player.hasPermission(settings.getValue("ExemptPermission"))) {
 
 					server.getScheduler().scheduleSyncDelayedTask(this, () -> {
-						player.sendMessage(nou);
-
 						if (settings.getBoolean("LogChat")) {
 							String log = "Player: " + player.getName() + ". Said \"" + message + "\". And was told no u";
 
 							tools.log(log);
 						}
+
+
+						if (settings.getBoolean("UseRandomPlayerAsReply")) {
+							Player random = randomPlayer(player);
+
+							if (random != null) {
+								random.chat(nou);
+								return;
+							}
+						}
+
+						player.sendMessage(nou);
 
 					}, 10L);
 
@@ -82,6 +95,22 @@ public class NoU extends JavaPlugin implements Listener {
 			}
 		}
 
+	}
+
+	protected Player randomPlayer(Player... ignore) {
+		Player p = null;
+
+		List<Player> pList = new ArrayList<>();
+		pList.addAll(Bukkit.getOnlinePlayers());
+		pList.remove(ignore[0]);
+		Random r = new Random();
+		if (!pList.isEmpty()) {
+			int rnd = r.nextInt(pList.size());
+
+			return pList.get(rnd);
+		}
+
+		return p;
 	}
 
 	public List<String> defaultWords() {
