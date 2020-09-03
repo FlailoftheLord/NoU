@@ -1,4 +1,4 @@
-package me.flail.slashplayer.tools;
+package me.flail.nou.tools;
 
 import java.text.SimpleDateFormat;
 import java.time.Instant;

@@ -1,4 +1,4 @@
-package me.flail.slashplayer;
+package me.flail.nou.tools;
 
 import java.io.File;
 import java.util.List;
@@ -6,8 +6,6 @@ import java.util.Set;
 
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
-
-import me.flail.slashplayer.tools.Logger;
 
 /**
  * A super-inflated, insanely overrated data handler for YAML files.
@@ -19,6 +17,7 @@ public class DataFile extends Logger {
 	private FileConfiguration config = new YamlConfiguration();
 
 	public DataFile(String path) {
+
 		try {
 			file = new File(plugin.getDataFolder() + "/" + path);
 			if (!file.exists()) {

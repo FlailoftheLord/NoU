@@ -1,4 +1,4 @@
-package me.flail.slashplayer.tools;
+package me.flail.nou.tools;
 
 import java.io.BufferedWriter;
 import java.io.File;
@@ -7,6 +7,9 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
 import org.bukkit.ChatColor;
+import org.bukkit.plugin.java.JavaPlugin;
+
+import me.flail.nou.NoU;
 
 /**
  * Basically, make all your classes extend this one.
@@ -16,6 +19,7 @@ import org.bukkit.ChatColor;
  * @author FlailoftheLord
  */
 public class Logger extends Tools {
+	protected NoU plugin = JavaPlugin.getPlugin(NoU.class);
 
 	public void console(String string) {
 		plugin.server.getConsoleSender().sendMessage(chat("[" + plugin.getDescription().getPrefix() + "] " + string));
@@ -38,8 +42,8 @@ public class Logger extends Tools {
 
 			File logFile = new File(plugin.getDataFolder() + "/logs/" + timeLog + ".txt");
 			if (!logFile.exists()) {
+				new File(plugin.getDataFolder() + "/logs/").mkdir();
 				logFile.createNewFile();
-
 			}
 
 
